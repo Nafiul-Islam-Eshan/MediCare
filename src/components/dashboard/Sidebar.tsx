@@ -25,6 +25,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import BrandName from "../shared/BrandName";
 
 const menuItems = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
@@ -43,7 +44,7 @@ export default function Sidebar() {
       <SidebarHeader>
         <Link href="/" className="flex items-center gap-3 p-2">
           <Image src={logo} alt="MediCare logo" width={40} height={40} />
-          <span className="text-lg font-bold">MediCare</span>
+          <BrandName/>
         </Link>
       </SidebarHeader>
 
@@ -53,16 +54,6 @@ export default function Sidebar() {
             <SidebarMenu>
               {menuItems.map((item, index) => {
 
-                // console.log({
-                //   item: item.title,
-                //   pathname,
-                //   itemUrl: item.url,
-                //   isActive: pathname === item.url,
-                //   activeClass:
-                //     pathname === item.url
-                //       ? "bg-emerald-200 text-emerald-700 font-semibold"
-                //       : "",
-                // });
 
                 return (
                   <SidebarMenuItem key={index}>
