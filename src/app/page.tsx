@@ -1,10 +1,8 @@
-import Sidebar from "@/components/dashboard/Sidebar";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="bg-green-200 text-green-600">
       Dashboard
-      <Sidebar/>
     </div>
   );
 }

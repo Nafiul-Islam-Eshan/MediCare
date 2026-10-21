@@ -9,6 +9,7 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import BrandName from "@/components/shared/BrandName";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +42,8 @@ export default function RootLayout({
             <header className="flex h-14 items-center gap-3 border-b px-4">
               <SidebarTrigger />
               <h1 className="font-semibold">
-                MediCare Dashboard
+                <BrandName/>
+                <span className="text-lg text-slate-700 ">Dashboard</span>
               </h1>
             </header>
 
