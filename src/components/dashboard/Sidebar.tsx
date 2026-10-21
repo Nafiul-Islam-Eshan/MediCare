@@ -51,18 +51,38 @@ export default function Sidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.url}>
-                  <SidebarMenuButton
-                    render={<Link href={item.url} />}
-                    isActive={pathname === item.url}
-                    tooltip={item.title}
-                  >
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {menuItems.map((item, index) => {
+
+                // console.log({
+                //   item: item.title,
+                //   pathname,
+                //   itemUrl: item.url,
+                //   isActive: pathname === item.url,
+                //   activeClass:
+                //     pathname === item.url
+                //       ? "bg-emerald-200 text-emerald-700 font-semibold"
+                //       : "",
+                // });
+
+                return (
+                  <SidebarMenuItem key={index}>
+                    <SidebarMenuButton
+                      variant={'outline'}
+                      size={'lg'}
+                      render={<Link href={item.url} />}
+                      isActive={pathname === item.url}
+                      tooltip={item.title}
+                      className="transition-colors duration-130 hover:bg-green-100 hover:text-green-700"
+                      
+                    >
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+
+                )
+
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
