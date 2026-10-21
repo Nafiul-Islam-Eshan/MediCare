@@ -1,4 +1,6 @@
 
+import BedOccupancy from "@/components/dashboard/BedOccupancy";
+import RecentAppointments from "@/components/dashboard/RecentAppointments";
 import StartCard from "@/components/dashboard/StatCard";
 import {
   Users,
@@ -76,104 +78,21 @@ export default function Home() {
       >
         {stats.map((stat, idx) => {
           
-          const {change, icon, value, description, title} = stat;
 
           return (
-            <StartCard key={idx} title={title} description={description} change={change} value={value} icon={icon} />
+            <StartCard key={idx} {...stat} />
           );
         })}
       </section>
 
       {/* Main dashboard sections */}
       <section className="grid grid-cols-1 gap-6 xl:grid-cols-3">
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 xl:col-span-2">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <h2 className="text-lg font-semibold text-slate-900">
-                Recent Appointments
-              </h2>
-
-              <p className="mt-1 text-sm text-slate-500">
-                A quick overview of scheduled visits.
-              </p>
-            </div>
-
-            <CalendarDays className="text-teal-700" size={22} />
-          </div>
-
-          <div className="mt-8 rounded-xl border border-dashed border-slate-200 px-4 py-10 text-center">
-            <CalendarDays
-              className="mx-auto text-slate-400"
-              size={32}
-            />
-
-            <p className="mt-3 font-medium text-slate-700">
-              Appointment list coming next
-            </p>
-
-            <p className="mt-1 text-sm text-slate-500">
-              We&apos;ll add appointment records in the next step.
-            </p>
-          </div>
+        <div className="min-w-0 xl:col-span-2">
+          <RecentAppointments />
         </div>
 
-        <div className="rounded-2xl border border-slate-200 bg-white p-6">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <h2 className="text-lg font-semibold text-slate-900">
-                Bed Occupancy
-              </h2>
-
-              <p className="mt-1 text-sm text-slate-500">
-                Current bed availability
-              </p>
-            </div>
-
-            <BedDouble className="text-teal-700" size={22} />
-          </div>
-
-          <div className="mt-8">
-            <div className="flex items-end justify-between gap-2">
-              <div>
-                <p className="text-3xl font-bold text-slate-900">
-                  68%
-                </p>
-
-                <p className="mt-1 text-sm text-slate-500">
-                  Occupancy rate
-                </p>
-              </div>
-
-              <p className="text-sm font-medium text-teal-700">
-                68 / 100 beds
-              </p>
-            </div>
-
-            <div
-              className="mt-5 h-2.5 overflow-hidden rounded-full bg-slate-100"
-              role="progressbar"
-              aria-label="Bed occupancy"
-              aria-valuenow={68}
-              aria-valuemin={0}
-              aria-valuemax={100}
-            >
-              <div className="h-full w-[68%] rounded-full bg-teal-600" />
-            </div>
-
-            <div className="mt-5 flex items-center justify-between text-sm">
-              <span className="text-slate-500">Occupied</span>
-              <span className="font-medium text-slate-800">
-                68 beds
-              </span>
-            </div>
-
-            <div className="mt-3 flex items-center justify-between text-sm">
-              <span className="text-slate-500">Available</span>
-              <span className="font-medium text-emerald-700">
-                32 beds
-              </span>
-            </div>
-          </div>
+        <div className="min-w-0">
+          <BedOccupancy totalBeds={300} occupiedBeds={68} />
         </div>
       </section>
     </div>
